@@ -1,0 +1,221 @@
+/* Réinitialisation de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+}
+
+/* Conteneur principal */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Titre principal */
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4a90e2;
+  text-align: center;
+  margin-bottom: 20px; /* Réduit légèrement l'espacement sous le titre */
+  letter-spacing: 1px;
+}
+
+/* Section des participants */
+.participants {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 40px; /* Ajoute un espace important sous les participants */
+}
+
+/* Champ de saisie du nombre de participants */
+.participants input {
+  width: 60px;
+  padding: 5px;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Contenu principal */
+.main-content {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+/* Header - Participants */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 40px; /* Ajoute un espace plus grand entre le header et les sections principales */
+}
+
+
+header input {
+  width: 60px;
+  padding: 5px;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Contenu principal */
+.main-content {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+/* Sections Liste de courses et Récapitulatif */
+.shopping-list, .summary {
+  width: 50%;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* Retrait de l'effet de zoom */
+}
+
+/* Titres de sections */
+.shopping-list h2, .summary h2 {
+  font-size: 1.8rem;
+  color: #4a90e2;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Liste des courses */
+.shopping-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.shopping-list li {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.shopping-list li:hover {
+  background-color: #f0f5ff;
+}
+
+.shopping-list input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: #4a90e2;
+}
+
+/* Récapitulatif des articles */
+.summary {
+  background-color: #f9f9f9;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.summary-item span {
+  font-size: 1.1rem;
+}
+
+.summary-item input {
+  width: 60px;
+  padding: 5px;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.total {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  color: #333;
+}
+
+/* Style du bouton */
+button {
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #357ab8;
+}
+
+/* Tableau récapitulatif */
+.summary-page {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+th {
+  background-color: #4a90e2;
+  color: #fff;
+}
+
+td {
+  text-align: center;
+}
+

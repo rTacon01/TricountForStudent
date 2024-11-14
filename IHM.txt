@@ -1,0 +1,66 @@
+const items = [
+  { name: "Pomme", price: 0.5 },
+  { name: "Banane", price: 0.3 },
+  { name: "Lait", price: 1.2 },
+  { name: "Pain", price: 1.0 },
+];
+
+const itemList = document.getElementById("item-list");
+const selectedItemsContainer = document.getElementById("selected-items");
+const totalPriceElement = document.getElementById("total-price");
+const participantsInput = document.getElementById("participants");
+
+let selectedItems = [];
+
+function updateTotalPrice() {
+  const participants = Math.max(parseInt(participantsInput.value) || 1, 1);
+  let total = selectedItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  total /= participants;
+  totalPriceElement.textContent = `${total.toFixed(2)} €`;
+}
+
+function addItemToSummary(item) {
+  const itemDiv = document.createElement("div");
+  itemDiv.className = "summary-item";
+
+  const itemLabel = document.createElement("span");
+  itemLabel.textContent = `${item.name} - ${item.price} €`;
+
+  const quantityInput = document.createElement("input");
+  quantityInput.type = "number";
+  quantityInput.value = 1;
+  quantityInput.min = 1;
+  quantityInput.addEventListener("input", () => {
+    item.quantity = parseInt(quantityInput.value);
+    updateTotalPrice();
+  });
+
+  itemDiv.appendChild(itemLabel);
+  itemDiv.appendChild(quantityInput);
+  selectedItemsContainer.appendChild(itemDiv);
+}
+
+function toggleItem(event, item) {
+  if (event.target.checked) {
+    item.quantity = 1;
+    selectedItems.push(item);
+    addItemToSummary(item);
+  } else {
+    selectedItems = selectedItems.filter(i => i.name !== item.name);
+    selectedItemsContainer.innerHTML = '';
+    selectedItems.forEach(addItemToSummary);
+  }
+  updateTotalPrice();
+}
+
+items.forEach(item => {
+  const li = document.createElement("li");
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.addEventListener("change", (event) => toggleItem(event, item));
+  li.appendChild(checkbox);
+  li.appendChild(document.createTextNode(`${item.name} - ${item.price} €`));
+  itemList.appendChild(li);
+});
+
+participantsInput.addEventListener("input", updateTotalPrice);

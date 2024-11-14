@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste de Courses</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="container">
+  <h1>TricountForStudent</h1>
 
+  <!-- Nombre de participants -->
+  <div class="participants">
+    <label for="participants">Nombre de participants :</label>
+    <input type="number" id="participants" min="1" value="1">
+  </div>
+
+  <div class="main-content">
+    <div class="shopping-list">
+      <h2>Liste de Courses</h2>
+      <ul id="listeArticles">
+        <!-- Liste d'articles sera insérée ici par JavaScript -->
+      </ul>
+    </div>
+
+    <div class="summary">
+      <h2>Récapitulatif</h2>
+      <ul id = "recapitulatif">
+        <!-- Liste des articles sélectionnés -->
+      </ul>
+      <div>
+        <button onclick="soustraire_quantiter()">-</button>
+        <span id="quantiter">0<span>
+          <button onclick="ajouter_quantiter()">+</button>
+
+      </div>
+      <div class="total">Total : <span>0.00 €</span></div>
+    </div>
+  </div>
+
+  <!-- Bouton pour afficher le récapitulatif -->
+  <button id="showSummaryButton">Afficher le récapitulatif des courses</button>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
