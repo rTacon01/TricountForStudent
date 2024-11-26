@@ -6,14 +6,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // Permet de récupérer le récapitulatif des articles sélectionnés
   const recapitulatifArticles = document.getElementById('recapitulatif');
 
-  // Liste d'articles avec leur nom et leur prix
+// Liste d'articles avec leur nom et leur prix
   const article = [
-    { nom: "Pain", prix: 1.20 },
-    { nom: "Lait", prix: 0.80 },
-    { nom: "Tomates", prix: 2.50 },
-    { nom: "Pommes", prix: 3.00 },
-    { nom: "Céréales", prix: 4.50 },
-    { nom: "Fromage", prix: 2.90 }
+    { nom: "Pain", prix: 1.20, image : "img/bguette.webp" },
+    { nom: "Saucisson", prix: 3.80, image : "img/saucisson.webp" },
+    { nom: "Chips", prix: 2.50, image : "img/Chips.jpeg" },
+    { nom: "Jus d'orange", prix: 2.40, image : "img/jus orange.jpeg" },
+    { nom: "Céréales", prix: 3.30, image : "img/céréales.jpeg" },
+    { nom: "Fromage", prix: 2.90, image : "" },
+    { nom: "PS5", prix: 599.99, image : "img/PS5.jpeg" }
   ];
 
   // Création de la variable total
@@ -21,6 +22,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function viderListe() {
     listeArticles.innerHTML = '';
+  }
+
+  function afficherImage(src) {
+    let imageDiv = document.getElementById('imagePreview');
+    if (!imageDiv) {
+      imageDiv = document.createElement('div');
+      imageDiv.id = 'imagePreview';
+      imageDiv.style.position = 'absolute';
+      imageDiv.style.border = '1px solid #ddd';
+      imageDiv.style.padding = '10px';
+      imageDiv.style.backgroundColor = '#fff';
+      document.body.appendChild(imageDiv);
+    }
+    imageDiv.innerHTML = `<img src="${src}" alt="Image de l'article" style="width: 300px; height: auto;">`;
+    imageDiv.style.display = 'block';
+  }
+
+  function cacherImage() {
+    const imageDiv = document.getElementById('imagePreview');
+    if (imageDiv) {
+      imageDiv.style.display = 'none';
+    }
   }
 
   // Fonction pour ajouter les articles à la liste HTML
@@ -67,6 +90,10 @@ document.addEventListener('DOMContentLoaded', function () {
       // Ajouter la case à cocher et le label à l'élément de liste
       liste.appendChild(checkbox);
       liste.appendChild(label);
+
+      // Ajouter des événements pour afficher l'image au survol et la cacher quand la souris quitte
+      liste.addEventListener('mouseover', () => afficherImage(item.image));
+      liste.addEventListener('mouseout', cacherImage);
 
       // Ajouter l'élément de liste au DOM
       listeArticles.appendChild(liste);
