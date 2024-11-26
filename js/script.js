@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
     { nom: "Jus d'orange", prix: 2.40, image : "img/jus orange.jpeg" },
     { nom: "Céréales", prix: 3.30, image : "img/céréales.jpeg" },
     { nom: "Fromage", prix: 2.90, image : "" },
+    { nom: "Ravioli", prix: 1.54, image : "" },
+    { nom: "Tomates", prix: 3.99, image : "" },
+    { nom: "Carottes", prix: 1.30, image : "" },
     { nom: "PS5", prix: 599.99, image : "img/PS5.jpeg" }
   ];
 
@@ -71,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
           // Ajouter l'article au récapitulatif
           recapitulatifArticles.appendChild(recapElement);
           total += item.prix;
+
         } else { // Si on le décheck, il faut retirer le prix et l'élément du récapitulatif
           const elementASupprimer = document.getElementById(`recap-${item.nom}`);
           if (elementASupprimer) {
@@ -85,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Créer un label pour l'élément de la liste
       const label = document.createElement('label');
       label.setAttribute('for', item.nom);
-      label.textContent = `${item.nom} - ${item.prix.toFixed(2)}€ l'unité`;
+      label.textContent = `${item.nom}`;
 
       // Ajouter la case à cocher et le label à l'élément de liste
       liste.appendChild(checkbox);
@@ -102,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Initialiser la liste d'articles
   ajouterArticle();
+
 });
 
 
