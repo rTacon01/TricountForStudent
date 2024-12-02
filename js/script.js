@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Permet de récupérer la Div permettant d'avoir la liste d'articles
+  // Sélection des éléments principaux
   const listeArticles = document.getElementById('listeArticles');
-  // Permet de récupérer le total et de le modifier
   const totalArticles = document.querySelector('.total span');
-  // Permet de récupérer le récapitulatif des articles sélectionnés
   const recapitulatifArticles = document.getElementById('recapitulatif');
+  const participantsInput = document.getElementById('participants');
+
+  // Ajout d'un élément pour afficher le prix par participant
+  const prixParParticipantElement = document.createElement('div');
+  prixParParticipantElement.id = 'prixParParticipant';
+  totalArticles.parentNode.appendChild(prixParParticipantElement);
 
   // Liste d'articles avec leur nom et leur prix
   const article = [
@@ -49,7 +53,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // Fonction pour mettre à jour le total et le prix par participant
+  function mettreAJourTotal() {
+    const participants = parseInt(participantsInput.value) || 1;
 
+    // Calculer le total global
+    total = article.reduce((acc, item) => acc + (item.prix * item.quantite * participants), 0);
+
+    // Mettre à jour le total global
+    totalArticles.textContent = total.toFixed(2) + "€";
+
+    // Calculer et afficher le prix par participant
+    const prixParParticipant = total / participants;
+
+    // Mettre à jour l'élément prix par participant
+    prixParParticipantElement.textContent = " \n prix par personne "+prixParParticipant.toFixed(2)+"€";
+  }
+
+  // Ajouter un écouteur d'événements pour le changement du nombre de participants
+  participantsInput.addEventListener('change', mettreAJourTotal);
 
   // Fonction pour ajouter les articles à la liste HTML
   function ajouterArticle() {
@@ -100,8 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Mettre à jour le total si l'article est coché
         if (checkbox.checked) {
-          total += item.prix;
-          totalArticles.textContent = total.toFixed(2) + "€";
+          mettreAJourTotal();
         }
       });
 
@@ -118,8 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           // Mettre à jour le total si l'article est coché
           if (checkbox.checked) {
-            total -= item.prix;
-            totalArticles.textContent = total.toFixed(2) + "€";
+            mettreAJourTotal();
           }
         }
       });
@@ -131,9 +151,8 @@ document.addEventListener('DOMContentLoaded', function () {
           recapElement.appendChild(quantiteContainer);
           recapitulatifArticles.appendChild(recapElement);
 
-          // Mettre à jour le total en fonction de la quantité actuelle
-          total += item.prix * item.quantite;
-          totalArticles.textContent = total.toFixed(2) + "€";
+          // Mettre à jour le total
+          mettreAJourTotal();
 
           // Activer/désactiver le bouton moins selon la quantité
           moinsBtn.disabled = item.quantite === 0;
@@ -143,9 +162,8 @@ document.addEventListener('DOMContentLoaded', function () {
             recapitulatifArticles.removeChild(elementASupprimer);
           }
 
-          // Soustraire le total de la quantité actuelle
-          total -= item.prix * item.quantite;
-          totalArticles.textContent = total.toFixed(2) + "€";
+          // Mettre à jour le total
+          mettreAJourTotal();
         }
       });
 
