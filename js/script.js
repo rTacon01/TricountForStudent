@@ -81,22 +81,29 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Fonction pour mettre à jour le total et le prix par participant
   function mettreAJourTotal() {
     const participants = parseInt(participantsInput.value) || 1;
 
-    // Calculer le total global
-    total = article.reduce((acc, item) => acc + (item.prix * item.quantite * participants), 0);
+    // Calculer le total global basé sur la quantité d'articles et leur prix
+    total = article.reduce((acc, item) => acc + (item.prix * item.quantite), 0);
 
-    // Mettre à jour le total global
+    // Mettre à jour le total global (total ne dépend pas du nombre de participants)
     totalArticles.textContent = total.toFixed(2) + "€";
 
-    // Calculer et afficher le prix par participant
+    // Calculer le prix par participant en fonction du nombre de participants
     const prixParParticipant = total / participants;
 
-    // Mettre à jour l'élément prix par participant
-    prixParParticipantElement.textContent = " \n prix par personne "+prixParParticipant.toFixed(2)+"€";
+    // Mettre à jour le prix par participant
+    prixParParticipantElement.textContent = `Prix par personne : ${prixParParticipant.toFixed(2)}€`;
   }
+
+// Ajouter un écouteur d'événements pour le changement du nombre de participants
+  participantsInput.addEventListener('change', mettreAJourTotal);
+
+
+
+// Ajouter un écouteur d'événements pour le changement du nombre de participants
+  participantsInput.addEventListener('change', mettreAJourTotal);
 
   // Ajouter un écouteur d'événements pour le changement du nombre de participants
   participantsInput.addEventListener('change', mettreAJourTotal);
