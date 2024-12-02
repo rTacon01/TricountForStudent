@@ -78,7 +78,6 @@ header {
   margin-bottom: 40px; /* Ajoute un espace plus grand entre le header et les sections principales */
 }
 
-
 header input {
   width: 60px;
   padding: 5px;
@@ -88,13 +87,6 @@ header input {
   border-radius: 5px;
 }
 
-/* Contenu principal */
-.main-content {
-  display: flex;
-  width: 100%;
-  gap: 20px;
-}
-
 /* Sections Liste de courses et Récapitulatif */
 .shopping-list, .summary {
   width: 50%;
@@ -102,7 +94,6 @@ header input {
   padding: 20px;
   background-color: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  /* Retrait de l'effet de zoom */
 }
 
 /* Titres de sections */
@@ -219,3 +210,88 @@ td {
   text-align: center;
 }
 
+/* Media Queries pour la responsivité */
+
+/* Pour les écrans de moins de 768px */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .participants {
+    flex-direction: column;
+    font-size: 1rem;
+  }
+
+  .participants input {
+    width: 50px;
+  }
+
+  .main-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .shopping-list, .summary {
+    width: 100%;
+  }
+
+  .shopping-list h2, .summary h2 {
+    font-size: 1.5rem;
+  }
+
+  .summary-item {
+    font-size: 1rem;
+  }
+
+  .total {
+    font-size: 1.2rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .summary-page {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+}
+
+/* Pour les écrans de moins de 480px */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .participants input {
+    width: 40px;
+  }
+
+  .summary-item {
+    font-size: 0.9rem;
+  }
+
+  .total {
+    font-size: 1rem;
+  }
+
+  .shopping-list li, .summary-item {
+    padding: 8px;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}

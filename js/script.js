@@ -8,16 +8,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Liste d'articles avec leur nom et leur prix
   const article = [
-    { nom: "Pain", prix: 1.20, image : "img/bguette.webp", quantite: 0 },
-    { nom: "Saucisson", prix: 3.80, image : "img/saucisson.webp", quantite: 0 },
-    { nom: "Chips", prix: 2.50, image : "img/Chips.jpeg", quantite: 0 },
-    { nom: "Jus d'orange", prix: 2.40, image : "img/jus orange.jpeg", quantite: 0 },
-    { nom: "Céréales", prix: 3.30, image : "img/céréales.jpeg", quantite: 0 },
-    { nom: "Fromage", prix: 2.90, image : "img/fromage.jpeg", quantite: 0 },
-    { nom: "Ravioli", prix: 1.54, image : "img/ravioli.jpeg", quantite: 0 },
-    { nom: "Tomates", prix: 3.99, image : "img/tomates.jpeg", quantite: 0 },
-    { nom: "Carottes", prix: 1.30, image : "img/carottes.jpeg", quantite: 0 },
-    { nom: "PS5", prix: 599.99, image : "img/PS5.jpeg", quantite: 0 }
+    { nom: "Pain", prix: 1.20, image : "img/bguette.webp" },
+    { nom: "Saucisson", prix: 3.80, image : "img/saucisson.webp" },
+    { nom: "Chips", prix: 2.50, image : "img/Chips.jpeg" },
+    { nom: "Jus d'orange", prix: 2.40, image : "img/jus orange.jpeg" },
+    { nom: "Céréales", prix: 3.30, image : "img/céréales.jpeg" },
+    { nom: "Fromage", prix: 2.90, image : "img/fromage.jpeg" },
+    { nom: "Ravioli", prix: 1.54, image : "img/ravioli.jpeg" },
+    { nom: "Tomates", prix: 3.99, image : "img/tomates.jpeg" },
+    { nom: "Carottes", prix: 1.30, image : "img/carottes.jpeg" }
   ];
 
   // Création de la variable total
@@ -37,10 +36,36 @@ document.addEventListener('DOMContentLoaded', function () {
       imageDiv.style.padding = '10px';
       imageDiv.style.backgroundColor = '#fff';
       document.body.appendChild(imageDiv);
+
+      // Ajouter des styles responsives via une feuille de style
+      const style = document.createElement('style');
+      style.innerHTML = `
+            #imagePreview {
+                left: 400px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            @media (max-width: 768px) {
+                #imagePreview {
+                    left: 200px; /
+                }
+            }
+
+            @media (max-width: 480px) {
+                #imagePreview {
+                    left: 5px;
+                    width: 90%;
+                }
+            }
+        `;
+      document.head.appendChild(style);
     }
+
     imageDiv.innerHTML = `<img src="${src}" alt="Image de l'article" style="width: 300px; height: auto;">`;
     imageDiv.style.display = 'block';
   }
+
 
   function cacherImage() {
     const imageDiv = document.getElementById('imagePreview');
