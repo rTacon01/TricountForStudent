@@ -41,10 +41,38 @@ document.addEventListener('DOMContentLoaded', function () {
       imageDiv.style.padding = '10px';
       imageDiv.style.backgroundColor = '#fff';
       document.body.appendChild(imageDiv);
+
+      // Ajouter des styles responsives via une feuille de style
+      const style = document.createElement('style');
+      style.innerHTML = `
+            #imagePreview {
+                left: 250px;
+                top: 50%;
+                transform: translate(-25%, -25%);
+                display: none;
+            }
+
+            @media (max-width: 768px) {
+                #imagePreview {
+                    left: 250px;
+                    width: 200px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                #imagePreview {
+                    left: 5px;
+                    width: 70%;
+                }
+            }
+        `;
+      document.head.appendChild(style);
     }
+
     imageDiv.innerHTML = `<img src="${src}" alt="Image de l'article" style="width: 300px; height: auto;">`;
     imageDiv.style.display = 'block';
   }
+
 
   function cacherImage() {
     const imageDiv = document.getElementById('imagePreview');
