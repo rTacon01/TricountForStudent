@@ -115,6 +115,13 @@ h1 {
 /* Récapitulatif des articles */
 .summary {
   background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacement uniforme */
+  align-items: center;
 }
 
 .summary-item {
@@ -139,13 +146,11 @@ h1 {
   border-radius: 5px;
 }
 
-.total {
-  font-size: 1.5rem;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-  color: #333;
+.total, #prixParParticipant{
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
 }
 
 /* Style du bouton */
@@ -164,7 +169,63 @@ button {
 button:hover {
   background-color: #357ab8;
 }
+.stocker-button {
+  margin-top: 15px;
+  align-self: center; /* Centre le bouton horizontalement */
+  background-color: #4a90e2;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
+.stocker-button:hover {
+  background-color: #357ab8;
+}
+
+/* Conteneur des boutons de quantité */
+.quantite-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Espace uniforme entre les boutons et la quantité */
+}
+
+.quantite-container button {
+  width: 40px; /* Largeur fixe pour les boutons */
+  height: 40px; /* Hauteur fixe pour uniformité */
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 50%; /* Boutons circulaires */
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.quantite-container button:hover {
+  background-color: #357ab8;
+}
+
+.quantite-container span {
+  font-size: 1.2rem; /* Taille du texte de la quantité */
+  line-height: 40px; /* Identique à la hauteur des boutons pour alignement vertical */
+  min-width: 40px; /* Largeur minimale pour éviter que le texte soit compressé */
+  height: 40px; /* Assure que la hauteur est identique aux boutons */
+  text-align: center; /* Centre le texte horizontalement */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centre le texte verticalement */
+  background-color: #f0f2f5; /* Facultatif : ajoute un fond pour la quantité */
+  border-radius: 5px; /* Ajoute un style uniforme */
+  border: 1px solid #ddd;
+}
 /* Tableau récapitulatif */
 .summary-page {
   width: 90%;
@@ -197,6 +258,34 @@ td {
 
 /* Pour les écrans de moins de 768px */
 @media (max-width: 768px) {
+  .quantite-container {
+    gap: 5px; /* Réduit l'espacement sur les petits écrans */
+  }
+
+  .quantite-container button {
+    width: 30px; /* Taille réduite des boutons */
+    height: 30px;
+    font-size: 1rem;
+  }
+
+  .quantite-container span {
+    font-size: 1rem;
+    line-height: 30px;
+    min-width: 30px; /* Ajustement de la largeur minimale */
+    height: 30px;
+  }
+  .summary {
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .total, #prixParParticipant {
+    font-size: 1rem;
+  }
+
+  .stocker-button {
+    width: 100%; /* Le bouton prend toute la largeur */
+  }
   body {
     align-items: flex-start;  /* Alignement vers le haut */
   }
