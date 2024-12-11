@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
     { nom: "Ravioli", prix: 1.54, image: "img/ravioli.jpeg", quantite: 0 },
     { nom: "Tomates", prix: 3.99, image: "img/tomates.jpeg", quantite: 0 },
     { nom: "Carottes", prix: 1.30, image: "img/carottes.jpeg", quantite: 0 },
-    { nom: "PS5", prix: 599.99, image: "img/PS5.jpeg", quantite: 0 }
   ];
 
   // Création de la variable total
@@ -111,29 +110,45 @@ document.addEventListener('DOMContentLoaded', function () {
       checkbox.value = item.prix;
       checkbox.id = item.nom;
 
-      const recapElement = document.createElement('li');
-      recapElement.textContent = `${item.nom} - ${item.prix.toFixed(2)}€`;
+      // Création de recapElement
+      const recapElement = document.createElement('div');
+      recapElement.style.display = 'flex';
+      recapElement.style.justifyContent = 'space-between';
+      recapElement.style.alignItems = 'center';
+      recapElement.style.gap = '10px';
       recapElement.id = `recap-${item.nom}`;
 
+      // Création du texte descriptif de l'article
+      const recapText = document.createElement('span');
+      recapText.textContent = `${item.nom} - ${item.prix.toFixed(2)}€`;
+      recapText.style.flexGrow = '1';
+
+      // Création du conteneur de quantité
       const quantiteContainer = document.createElement('div');
-      quantiteContainer.style.display = 'inline-flex';
-      quantiteContainer.style.gap = '10px';
+      quantiteContainer.className = 'quantite-container';
 
       const moinsBtn = document.createElement('button');
+      moinsBtn.className = 'quantite-button';
       moinsBtn.textContent = '-';
-      moinsBtn.disabled = true;
-
-      const quantiteSpan = document.createElement('span');
-      quantiteSpan.textContent = '0';
-      quantiteSpan.id = `quantite-${item.nom}`;
 
       const plusBtn = document.createElement('button');
+      plusBtn.className = 'quantite-button';
       plusBtn.textContent = '+';
 
+      const quantiteSpan = document.createElement('span');
+      quantiteSpan.className = 'quantite-value';
+      quantiteSpan.textContent = '0';
+
+      // Ajouter les boutons et la quantité au conteneur
       quantiteContainer.appendChild(moinsBtn);
       quantiteContainer.appendChild(quantiteSpan);
       quantiteContainer.appendChild(plusBtn);
 
+      // Ajout du texte et du conteneur de quantité dans recapElement
+      recapElement.appendChild(recapText);
+      recapElement.appendChild(quantiteContainer);
+
+      // Gestion des événements pour la quantité
       plusBtn.addEventListener('click', function () {
         item.quantite++;
         quantiteSpan.textContent = item.quantite;
@@ -158,8 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       checkbox.addEventListener('change', function () {
         if (checkbox.checked) {
-          recapElement.appendChild(quantiteContainer);
-          recapitulatifArticles.appendChild(recapElement);
+          recapitulatifArticles.appendChild(recapElement); // Ajout au récapitulatif
           mettreAJourTotal();
           moinsBtn.disabled = item.quantite === 0;
         } else {
@@ -171,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
+      // Création de la case à cocher avec le label
       const label = document.createElement('label');
       label.setAttribute('for', item.nom);
       label.textContent = `${item.nom}`;
@@ -185,6 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+
   // Initialiser la liste d'articles
   ajouterArticle();
 
@@ -197,8 +213,13 @@ document.addEventListener('DOMContentLoaded', function () {
   containerGris.appendChild(stockerButton);
 
   stockerButton.onclick = function () {
+    const participants = parseInt(participantsInput.value) || 1; // Valeur par défaut : 1 participant
+    const totalParParticipant = (total / participants).toFixed(2);
+
     const selections = {
-      participants: participantsInput.value,
+      participants: participants,
+      prixParParticipant: totalParParticipant,
+      totalGlobal: total.toFixed(2),
       articles: article
         .filter(a => a.quantite > 0)
         .map(a => ({ nom: a.nom, quantite: a.quantite, prix: a.prix })),
@@ -207,4 +228,5 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('courses', JSON.stringify(selections));
     alert('Vos courses ont été sauvegardées.');
   };
+
 });

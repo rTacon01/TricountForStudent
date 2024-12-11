@@ -186,46 +186,66 @@ button:hover {
   background-color: #357ab8;
 }
 
-/* Conteneur des boutons de quantité */
-.quantite-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px; /* Espace uniforme entre les boutons et la quantité */
+/* Conteneur global pour le récapitulatif (un élément <li>) */
+.summary-item {
+  display: flex; /* Place les enfants sur une ligne */
+  justify-content: space-between; /* Le texte à gauche, les boutons à droite */
+  align-items: center; /* Assure un alignement vertical centré */
+  margin-bottom: 10px;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
 }
 
-.quantite-container button {
-  width: 40px; /* Largeur fixe pour les boutons */
-  height: 40px; /* Hauteur fixe pour uniformité */
+/* Texte de description (par exemple, "Pain - 1.20€") */
+.summary-item span {
+  flex-grow: 1; /* Le texte prend tout l'espace restant */
+  text-align: left; /* Assure que le texte est bien à gauche */
+}
+
+/* Conteneur des boutons */
+.quantite-container {
+  display: flex; /* Place les boutons "+" et "-" sur une ligne */
+  justify-content: center; /* Centrage horizontal */
+  align-items: center; /* Centrage vertical */
+  gap: 10px; /* Espace entre les boutons et la quantité */
+}
+
+/* Boutons de quantité */
+.quantite-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  border: none;
   background-color: #4a90e2;
   color: white;
-  border: none;
-  border-radius: 50%; /* Boutons circulaires */
-  font-size: 1rem;
-  cursor: pointer;
+  font-size: 1.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.quantite-container button:hover {
+.quantite-button:hover {
   background-color: #357ab8;
 }
 
-.quantite-container span {
-  font-size: 1.2rem; /* Taille du texte de la quantité */
-  line-height: 40px; /* Identique à la hauteur des boutons pour alignement vertical */
-  min-width: 40px; /* Largeur minimale pour éviter que le texte soit compressé */
-  height: 40px; /* Assure que la hauteur est identique aux boutons */
-  text-align: center; /* Centre le texte horizontalement */
+/* Quantité */
+.quantite-value {
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
-  align-items: center; /* Centre le texte verticalement */
-  background-color: #f0f2f5; /* Facultatif : ajoute un fond pour la quantité */
-  border-radius: 5px; /* Ajoute un style uniforme */
+  align-items: center;
+  text-align: center;
+  font-size: 1.2rem;
   border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f0f2f5;
 }
+
+
+
 /* Tableau récapitulatif */
 .summary-page {
   width: 90%;
@@ -371,3 +391,68 @@ td {
     padding: 8px;
   }
 }
+
+/* Styles spécifiques à la page récapitulatif */
+.recap-container {
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recap-container h1 {
+  font-size: 2rem;
+  color: #367bf5;
+  margin-bottom: 20px;
+}
+
+.recap-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.recap-container th,
+.recap-container td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.recap-container th {
+  background-color: #367bf5;
+  color: white;
+}
+
+.recap-container td {
+  background-color: white;
+}
+
+.recap-container .summary {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.recap-container .summary p {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.recap-container button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #367bf5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.recap-container button:hover {
+  background-color: #265bb5;
+}
+

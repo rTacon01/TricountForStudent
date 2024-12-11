@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Récapitulatif</title>
+  <link rel = "stylesheet" type = "text/css" href = "css/styles.css">
+</head>
+<body>
+<div class="recap-container">
+  <h1>Récapitulatif des courses</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>Nom de l'article</th>
+      <th>Quantité</th>
+      <th>Prix unitaire</th>
+      <th>Total</th>
+      <th>Participants</th>
+      <th>Total par participant</th>
+    </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <div class="summary">
+    <p><strong>Total général :</strong> <span id="totalGeneral">0.00 €</span></p>
+    <p><strong>Nombre de participants :</strong> <span id="participants">1</span></p>
+    <p><strong>Prix par participant :</strong> <span id="prixParParticipant">0.00 €</span></p>
+  </div>
+
+  <footer>
+    <button id="backButton" onclick="window.location.href='index.html'">Retour à l'accueil</button>
+  </footer>
+</div>
+<script src = "js/recapitulatif.js"></script>
+</body>
+</html>

@@ -25,7 +25,7 @@
     </div>
     <div id="recapitulatifArticles"></div>
     <div class="summary">
-      <h2>Récapitulatif</h2>
+      <h2>Vos articles sélectionnés :</h2>
       <ul id = "recapitulatif">
         <!-- Liste des articles sélectionnés -->
       </ul>
@@ -38,8 +38,15 @@
 
   </div>
 
-  <!-- Bouton pour afficher le récapitulatif -->
-  <button id="showSummaryButton">Afficher le récapitulatif des courses</button>
+  <!-- Ajout d'un bouton pour afficher le récapitulatif -->
+  <button id="afficherRecap" style="margin: 10px auto; display: block;">Afficher le récapitulatif</button>
+
+  <script>
+    // Redirige vers la page de récapitulatif
+    document.getElementById('afficherRecap').addEventListener('click', function () {
+      window.location.href = 'recapitulatif.html';
+    });
+  </script>
 </div>
 
 <script src="js/script.js"></script>
