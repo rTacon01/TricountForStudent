@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const listeArticles = document.getElementById('listeArticles');
   const totalArticles = document.querySelector('.total span');
   const recapitulatifArticles = document.getElementById('recapitulatif');
+
   const participantsInput = document.getElementById('participants');
+  const searchInput = document.getElementById('searchInput'); // Champ de recherche
 
   // Ajout d'un élément pour afficher le prix par participant
   const prixParParticipantElement = document.createElement('div');
@@ -26,7 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Création de la variable total
   let total = 0;
 
-  function viderListe() {
+
+
+function viderListe() {
     listeArticles.innerHTML = '';
   }
 
@@ -97,6 +101,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Ajouter un écouteur d'événements pour le changement du nombre de participants
   participantsInput.addEventListener('change', mettreAJourTotal);
+
+  // Fonction de filtrage des articles    a changer si sa marche pas
+  function filtrerArticles(termeDeRecherche) {
+    const terme = termeDeRecherche.toLowerCase();
+    const articlesFiltres = [];
+
+    // D'abord, trier les articles en fonction de la recherche
+    article.forEach(item => {
+      const element = document.getElementById(item.nom);
+      if (item.nom.toLowerCase().includes(terme)) {
+        // Afficher l'élément si le terme est trouvé
+        element.style.display = '';
+        // Ajouter à la liste des articles filtrés
+        articlesFiltres.push(item);
+      } else {
+        // Cacher l'élément si le terme ne correspond pas
+        element.style.display = 'none';
+      }
+    });
+    // Réorganiser la liste en mettant les articles filtrés en haut
+    articlesFiltres.forEach(item => {
+      const element = document.getElementById(item.nom);
+      listeArticles.prepend(element.closest('li'));
+    });
+  }
+
+  // Initialiser la liste d'articles
+  ajouterArticle();
+
+  // Écouter les changements dans le champ de recherche
+  searchInput.addEventListener('input', function () {
+    filtrerArticles(searchInput.value);
+  });
+
+
+  function reinitialiserFiltreDeRecherche() {
+    searchInput.value = ''; // Vide le champ de recherche
+    filtrerArticles(''); // Désactive le filtre en passant une chaîne vide
+  }
+
 
   // Fonction pour ajouter les articles à la liste HTML
   function ajouterArticle() {
