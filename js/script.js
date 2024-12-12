@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Sélection des éléments principaux
+
+  /**
+   * Variables principales pour séléctionner les élement de la page
+   *
+   */
   const listeArticles = document.getElementById('listeArticles');
   const totalArticles = document.querySelector('.total span');
   const recapitulatifArticles = document.getElementById('recapitulatif');
@@ -12,7 +16,10 @@ document.addEventListener('DOMContentLoaded', function () {
   prixParParticipantElement.id = 'prixParParticipant';
   totalArticles.parentNode.appendChild(prixParParticipantElement);
 
-  // Liste d'articles avec leur nom et leur prix
+
+/**
+  * Liste d'articles avec leur nom et leur prix,image et quantité
+ * */
   const article = [
     { nom: "Pain", prix: 1.20, image: "img/bguette.webp", quantite: 0 },
     { nom: "Saucisson", prix: 3.80, image: "img/saucisson.webp", quantite: 0 },
@@ -23,17 +30,24 @@ document.addEventListener('DOMContentLoaded', function () {
     { nom: "Ravioli", prix: 1.54, image: "img/ravioli.jpeg", quantite: 0 },
     { nom: "Tomates", prix: 3.99, image: "img/tomates.jpeg", quantite: 0 },
     { nom: "Carottes", prix: 1.30, image: "img/carottes.jpeg", quantite: 0 },
+    { nom: "Tomates cerise", prix: 1.30, image: "img/tomates.jpeg", quantite: 0 },
   ];
 
   // Création de la variable total
   let total = 0;
 
 
-
-function viderListe() {
+  /**
+   * Vider la liste des articles
+   */
+  function viderListe() {
     listeArticles.innerHTML = '';
   }
 
+  /**
+   * Affiche l'image de visualisation des différent article
+   * @param src - chemin de l'image à l'affichage
+   */
   function afficherImage(src) {
     let imageDiv = document.getElementById('imagePreview');
     if (!imageDiv) {
@@ -76,6 +90,9 @@ function viderListe() {
     imageDiv.style.display = 'block';
   }
 
+  /**
+   * Permet de chacher l'image des article
+   */
   function cacherImage() {
     const imageDiv = document.getElementById('imagePreview');
     if (imageDiv) {
@@ -83,6 +100,9 @@ function viderListe() {
     }
   }
 
+  /**
+   * Mise a jour du total global et le prix par participant
+   */
   function mettreAJourTotal() {
     const participants = parseInt(participantsInput.value) || 1;
 
@@ -101,6 +121,12 @@ function viderListe() {
 
   // Ajouter un écouteur d'événements pour le changement du nombre de participants
   participantsInput.addEventListener('change', mettreAJourTotal);
+
+
+  /**
+   * Filtre de recherche des articles en fonction du terme souhaité
+   * @param termeDeRecherche - Terme saisie par l'utilisateur
+   */
 
   // Fonction de filtrage des articles    a changer si sa marche pas
   function filtrerArticles(termeDeRecherche) {
@@ -136,12 +162,18 @@ function viderListe() {
   });
 
 
+  /**
+   * Réinitialise le filtre de recherche
+   */
   function reinitialiserFiltreDeRecherche() {
     searchInput.value = ''; // Vide le champ de recherche
     filtrerArticles(''); // Désactive le filtre en passant une chaîne vide
   }
 
-
+  /**
+   * Ajouter les articles à la liste affiché et configure leur quantité
+   * Stocker la liste de course séléctionné ainsi que le prix total, par personne ,nombre de personne,quantité
+   */
   // Fonction pour ajouter les articles à la liste HTML
   function ajouterArticle() {
     viderListe();
@@ -255,6 +287,7 @@ function viderListe() {
   stockerButton.style.display = 'block';
   stockerButton.style.margin = '10px auto'; // Centrage
   containerGris.appendChild(stockerButton);
+
 
   stockerButton.onclick = function () {
     const participants = parseInt(participantsInput.value) || 1; // Valeur par défaut : 1 participant
