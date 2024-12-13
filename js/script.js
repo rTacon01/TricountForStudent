@@ -67,8 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 top: 50%;
                 transform: translate(-25%, -25%);
                 display: none;
-                width: 250px;
-
             }
 
             @media (max-width: 768px) {
@@ -88,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.head.appendChild(style);
     }
 
-    imageDiv.innerHTML = `<img src="${src}" alt="Image de l'article" >`;
+    imageDiv.innerHTML = `<img src="${src}" alt="Image de l'article" style="width: 200px; height: auto;">`;
     imageDiv.style.display = 'block';
   }
 
