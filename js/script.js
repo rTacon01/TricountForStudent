@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 transform: translate(-25%, -25%);
                 display: none;
                 width: 250px;
+
             }
 
             @media (max-width: 768px) {
