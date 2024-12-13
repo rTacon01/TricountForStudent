@@ -63,10 +63,11 @@ document.addEventListener('DOMContentLoaded', function () {
       const style = document.createElement('style');
       style.innerHTML = `
             #imagePreview {
-                left: 250px;
+                left: 400px;
                 top: 50%;
                 transform: translate(-25%, -25%);
                 display: none;
+                width: 250px;
             }
 
             @media (max-width: 768px) {
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.head.appendChild(style);
     }
 
-    imageDiv.innerHTML = `<img src="${src}" alt="Image de l'article" style="width: 300px; height: auto;">`;
+    imageDiv.innerHTML = `<img src="${src}" alt="Image de l'article" >`;
     imageDiv.style.display = 'block';
   }
 
